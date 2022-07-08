@@ -1,0 +1,38 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class Locators {
+
+    WebElement locatorId=driver.findElement(By.id("login_credentials"));
+    WebElement locatorName=driver.findElement(By.name("add-to-cart-sauce-labs-bolt-t-shirt"));
+    WebElement locatorClassName=driver.findElement(By.className("header_secondary_container"));
+    WebElement locatorTagName=driver.findElement(By.tagName("div"));
+    WebElement locatorLinkText=driver.findElement(By.linkText("Reset App State"));
+    WebElement locatorPartLinkText=driver.findElement(By.partialLinkText("Reset "));
+
+    WebElement locatorAttribute=driver.findElement(By.xpath("//div[@id='inventory_container']"));
+    WebElement locatorText=driver.findElement(By.xpath("//div[text()='Sauce Labs Bike Light']"));
+    WebElement locatorPartOfAttribute=driver.findElement(By.xpath("//div[contains(@class,'inventory_')]"));
+    WebElement locatorPartOfText=driver.findElement(By.xpath("//div[contains(text(),'Sauce')] "));
+    WebElement locatorAncestor=driver.findElement(By.xpath("//*[text()='Sauce Labs Backpack']//ancestor::div"));
+    WebElement locatorDescendant=driver.findElement(By.xpath("//nav[@class='bm-item-list']//descendant::*"));//указывает на первого потомка  тега <nav>
+    WebElement locatorFollowingSiblings=driver.findElement(By.xpath("//a[@id='inventory_sidebar_link']//following-sibling::*[3]"));//третий <a> после @id='inventory_sidebar_link'
+    WebElement locatorParent=driver.findElement(By.xpath("//a[@id='reset_sidebar_link']//parent::*"));
+    WebElement locatorPreceding=driver.findElement(By.xpath("//a[@id='reset_sidebar_link']//preceding-sibling::*[2]"));//второй <a> перед @id='reset_sidebar_link'
+    WebElement locatorAnd=driver.findElement(By.xpath("//input[@class='input_error form_input' and @type='text']"));
+
+
+    WebElement locatorNameClass=driver.findElement(By.cssSelector(".bm-menu"));
+    WebElement locatorTwoClassName=driver.findElement(By.cssSelector(".inventory_details_desc_container.inventory_details_name large_size"));
+    WebElement locatorTwoClassNameWithSpace=driver.findElement(By.cssSelector(".bm-menu-wrap .bm-menu"));//выбирает все элементы класса bm-menu ,который вложен в класс bm-menu-wrap
+    WebElement locatorIdCss=driver.findElement(By.cssSelector("#header_container"));
+    WebElement locatorTagNameCss=driver.findElement(By.cssSelector("div"));
+    WebElement locatorTagClassName=driver.findElement(By.cssSelector("div.header_container"));
+    WebElement locatorAttributeValue=driver.findElement(By.cssSelector("[id=page_wrapper]"));//[attribute=value]
+    WebElement locatorAttributeValueTwo=driver.findElement(By.cssSelector("[id~=page_wrapper]"));//[attribute~=value]
+    WebElement locatorAttributeValueThree=driver.findElement(By.cssSelector("[rel|=icon]"));//[attribute|=value]
+    WebElement locatorAttributeValueFour=driver.findElement(By.cssSelector("a[id^='about']"));//[attribute^=value]start
+    WebElement locatorAttributeValueFive=driver.findElement(By.cssSelector("a[id$='link']"));//[attribute$=value]end
+    WebElement locatorAttributeValueSix=driver.findElement(By.cssSelector("a[class*=\"menu\"]"));//[attribute*=value]contains
+    WebElement locatorAttributeValueSeven=driver.findElement(By.cssSelector("[id=page_wrapper]"));
+}
