@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class ItemDetailsTest extends BaseTest{
-    final static String PRODUCT_NAME="Sauce Labs Fleece Jacket";
    ItemDetailsPage itemDetailsPage;
    ProductsPage productsPage;
    LoginPage loginPage;
@@ -25,16 +24,17 @@ public class ItemDetailsTest extends BaseTest{
    }
     @Test
     public void verifyItemNameAndPriceOnDetailsPageTest() {
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(), "$49.99");
         Assert.assertEquals(itemDetailsPage.getItemDescription(), "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.");
         itemDetailsPage.clickAddToCartButton();
+
     }
     @Test
     public void openCheckCartPageTest() {
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(),"$49.99");
@@ -45,7 +45,7 @@ public class ItemDetailsTest extends BaseTest{
     }
        @Test
     public void openBurgerMenuTest() {
-           loginPage.login("standard_user", "secret_sauce");
+           loginPage.login(USERNAME, PASSWORD);
            productsPage.clickToBurgerMenu();
            Assert.assertTrue(productsPage.isBurgerMenuAllItemsDisplayed());
            Assert.assertTrue(productsPage.isBurgerMenuAboutDisplayed());

@@ -11,9 +11,13 @@ import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
+    final static String USERNAME="standard_user";
+    final static String PASSWORD="secret_sauce";
+    final static String PRODUCT_NAME="Sauce Labs Fleece Jacket";
+
     protected WebDriver driver;
     protected LoginPage loginPage;
-    protected   ProductsPage productsPage;
+    protected ProductsPage productsPage;
     protected ItemDetailsPage itemDetailsPage;
     protected HomePage homePage;
     protected CartPage cartPage;
@@ -34,6 +38,7 @@ public class BaseTest {
 
         driver.get("https://www.saucedemo.com");
     }
+
     @AfterClass
     public void tearDown() {
         driver.quit();

@@ -3,7 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public  class HomePage extends BasePage{
+public abstract class HomePage extends BasePage{
     private final By cartButtonLink=By.cssSelector(".shopping_cart_link");
     private final By burgerMenuButton=By.xpath("//button[@id='react-burger-menu-btn']");
     private final By burgerMenuAllItems=By.xpath("//a[@id='inventory_sidebar_link' and text()='All Items']");

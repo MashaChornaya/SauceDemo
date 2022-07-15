@@ -7,11 +7,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class CheckoutTest extends BaseTest{
-    final static String PRODUCT_NAME="Sauce Labs Fleece Jacket";
+    final static String CHECKOUT_FIRST_NAME="Lev";
+    final static String CHECKOUT_LAST_NAME="Tolstoy";
+    final static String CHECKOUT_ZIP_POSTAL_CODE="12345";
     ItemDetailsPage itemDetailsPage;
     ProductsPage productsPage;
     CheckoutPage checkoutPage;
-    HomePage homePage;
     CartPage cartPage;
     CheckoutOverviewPage checkoutOverviewPage;
     FinishPage  finishPage;
@@ -21,7 +22,6 @@ public class CheckoutTest extends BaseTest{
     public void initialise(){
         itemDetailsPage=new ItemDetailsPage(driver);
         productsPage=new ProductsPage(driver);
-        homePage=new HomePage(driver);
         checkoutPage=new CheckoutPage(driver);
         cartPage=new CartPage(driver);
         checkoutOverviewPage=new CheckoutOverviewPage(driver);
@@ -29,29 +29,29 @@ public class CheckoutTest extends BaseTest{
     }
     @Test
     public void positiveActionsOnCheckoutYourInfoPageTest() {
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
         itemDetailsPage.clickAddToCartButton();
-        homePage.clickCartButtonLink();
+        itemDetailsPage.clickCartButtonLink();
         cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutPage.isHeaderCheckoutPageDisplayed());
-        checkoutPage.setFirstName("Lev");
-        checkoutPage.setLastName("Tolstoy");
-        checkoutPage.setZipPostalCode("12345");
+        checkoutPage.setFirstName(CHECKOUT_FIRST_NAME);
+        checkoutPage.setLastName(CHECKOUT_LAST_NAME);
+        checkoutPage.setZipPostalCode(CHECKOUT_ZIP_POSTAL_CODE);
         checkoutPage.clickContinueButton();
         Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageHeaderDisplayed());
     }
     @Test
     public void negativeActionsOnCheckoutYourInfoPageTest() {
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
         itemDetailsPage.clickAddToCartButton();
-        homePage.clickCartButtonLink();
+        itemDetailsPage.clickCartButtonLink();
         cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutPage.isHeaderCheckoutPageDisplayed());
         checkoutPage.setFirstName("");
-        checkoutPage.setLastName("Tolstoy");
-        checkoutPage.setZipPostalCode("12345");
+        checkoutPage.setLastName(CHECKOUT_LAST_NAME);
+        checkoutPage.setZipPostalCode(CHECKOUT_ZIP_POSTAL_CODE);
         checkoutPage.clickContinueButton();
         Assert.assertTrue(checkoutPage.isErrorMassageCheckoutPageDisplayed());
         Assert.assertEquals(checkoutPage.getErrorMassageCheckoutPageText(), "Error: First Name is required");
@@ -59,15 +59,15 @@ public class CheckoutTest extends BaseTest{
 
     @Test
     public void cancelActionOnCheckoutOverviewPageTest() {
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
         itemDetailsPage.clickAddToCartButton();
-        homePage.clickCartButtonLink();
+        itemDetailsPage.clickCartButtonLink();
         cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutPage.isHeaderCheckoutPageDisplayed());
-        checkoutPage.setFirstName("Lev");
-        checkoutPage.setLastName("Tolstoy");
-        checkoutPage.setZipPostalCode("12345");
+        checkoutPage.setFirstName(CHECKOUT_FIRST_NAME);
+        checkoutPage.setLastName(CHECKOUT_LAST_NAME);
+        checkoutPage.setZipPostalCode(CHECKOUT_ZIP_POSTAL_CODE);
         checkoutPage.clickContinueButton();
         Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageHeaderDisplayed());
         checkoutOverviewPage.clickCancelButton();
@@ -75,15 +75,15 @@ public class CheckoutTest extends BaseTest{
     }
     @Test
     public void finishActionOnCheckoutOverviewPageTest() {
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
         itemDetailsPage.clickAddToCartButton();
-        homePage.clickCartButtonLink();
+        itemDetailsPage.clickCartButtonLink();
         cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutPage.isHeaderCheckoutPageDisplayed());
-        checkoutPage.setFirstName("Lev");
-        checkoutPage.setLastName("Tolstoy");
-        checkoutPage.setZipPostalCode("12345");
+        checkoutPage.setFirstName(CHECKOUT_FIRST_NAME);
+        checkoutPage.setLastName(CHECKOUT_LAST_NAME);
+        checkoutPage.setZipPostalCode(CHECKOUT_ZIP_POSTAL_CODE);
         checkoutPage.clickContinueButton();
         Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageHeaderDisplayed());
         checkoutOverviewPage.clickFinishButton();

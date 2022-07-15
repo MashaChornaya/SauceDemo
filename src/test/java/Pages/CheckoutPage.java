@@ -11,8 +11,8 @@ private final By checkoutPageInputLastName = By.xpath("//input[@placeholder='Las
 private final By checkoutPageInputZipPostalCode = By.xpath("//input[@placeholder='Zip/Postal Code']");
 private final By continueButton = By.cssSelector("#continue");
 
-//private By errorMassageCheckoutPage= By.cssSelector(".error-message-container ");
-private By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
+private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
+
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
@@ -20,11 +20,12 @@ private By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
         return driver.findElement(checkoutPageHeader).isDisplayed();
     }
 
+
     public void checkout(String firstName, String lastName, String zipPostalCode){
-        setFirstName(firstName);
-        setLastName(lastName);
-        setZipPostalCode(zipPostalCode);
-        clickContinueButton();
+      setFirstName(firstName);
+      setLastName(lastName);
+      setZipPostalCode(zipPostalCode);
+      clickContinueButton();
     }
     public void setFirstName(String firstName){
 
