@@ -1,41 +1,48 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class ItemDetailsPage extends HomePage {
-    private final By addToCartButton = By.cssSelector("button[id^=add-to-cart]");
-    private final By backToProductsButton = By.id("back-to-products");
-    private final By itemName = By.cssSelector(".inventory_details_name");
-    private final By itemDescription=By.cssSelector(".inventory_details_desc");
-    private final By itemPrice=By.cssSelector(".inventory_details_price");
+    @FindBy(css = "button[id^=add-to-cart]")
+    private WebElement addToCartButton;
 
+    @FindBy(id = "back-to-products")
+    private WebElement backToProductsButton;
 
+    @FindBy(css = ".inventory_details_name")
+    private WebElement itemName;
+    @FindBy(css = ".inventory_details_desc")
+    private WebElement itemDescription;
+    @FindBy(css = ".inventory_details_price")
+    private WebElement itemPrice;
 
     public ItemDetailsPage(WebDriver driver) {
         super(driver);
     }
 
+
     public void clickAddToCartButton() {
-        driver.findElement(addToCartButton).click();
+        addToCartButton.click();
     }
 
     public void clickBackToProductsButton() {
-        driver.findElement(backToProductsButton).click();
+        backToProductsButton.click();
     }
 
     public String getItemName() {
 
-        return driver.findElement(itemName).getText();
+        return itemName.getText();
     }
 
     public String getItemDescription() {
-        return driver.findElement(itemDescription).getText();
+        return itemDescription.getText();
     }
 
     public String getItemPrice() {
 
-    return driver.findElement(itemPrice).getText() ;
-   }
+        return itemPrice.getText();
+    }
 
 }

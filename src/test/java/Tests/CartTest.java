@@ -1,6 +1,7 @@
 package Tests;
 
 import Pages.*;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,10 +15,11 @@ public class CartTest extends BaseTest{
 
     @BeforeClass
     public void initialise(){
-        itemDetailsPage=new ItemDetailsPage(driver);
+
         productsPage=new ProductsPage(driver);
         checkoutPage=new CheckoutPage(driver);
         cartPage=new CartPage(driver);
+        itemDetailsPage=new ItemDetailsPage(driver);
     }
     @Test
     public void actionsOnCartPageTest() {

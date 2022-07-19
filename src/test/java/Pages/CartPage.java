@@ -2,45 +2,72 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class CartPage extends BasePage{
-    private final By headerCartPage = By.cssSelector(".header_secondary_container");
-    private final By chosenItemName = By.cssSelector(".inventory_item_name");
-    private final By chosenItemDescription=By.cssSelector(".inventory_item_desc");
-    private final By chosenItemPrice = By.cssSelector(".inventory_item_price");
-    private final By cartQuantity = By.cssSelector(".cart_quantity");
-    private final By removeButton = By.xpath("//button[@class='btn btn_secondary btn_small cart_button' and text()='Remove']");
-    private final By continueShoppingButton = By.xpath("//button[@class='btn btn_secondary back btn_medium' and text()='Continue Shopping']");
-    private final By checkoutButton = By.xpath("//button[@class='btn btn_action btn_medium checkout_button' and text()='Checkout']");
+public class CartPage extends BasePage {
+
+    @FindBy(css = ".header_secondary_container")
+    private WebElement headerCartPage;
+
+    @FindBy(css = ".inventory_item_name")
+    private WebElement chosenItemName;
+
+    @FindBy(css = ".inventory_item_desc")
+    private WebElement chosenItemDescription;
+
+    @FindBy(css = ".inventory_item_price")
+    private WebElement chosenItemPrice;
+
+    @FindBy(css = ".cart_quantity")
+    private WebElement cartQuantity;
+
+    @FindBy(xpath = "//button[@class='btn btn_secondary btn_small cart_button' and text()='Remove']")
+    private WebElement removeButton;
+
+    @FindBy(xpath = "//button[@class='btn btn_secondary back btn_medium' and text()='Continue Shopping']")
+    private WebElement continueShoppingButton;
+
+    @FindBy(xpath = "//button[@class='btn btn_action btn_medium checkout_button' and text()='Checkout']")
+    private WebElement checkoutButton;
 
     public CartPage(WebDriver driver) {
 
         super(driver);
     }
-    public boolean isHeaderCartPageDisplayed() {return driver.findElement(headerCartPage).isDisplayed();}
+
+    public boolean isHeaderCartPageDisplayed() {
+        return headerCartPage.isDisplayed();
+    }
 
     public String getChosenItemName() {
-        return driver.findElement(chosenItemName).getText();
+        return chosenItemName.getText();
     }
 
-    public String getChosenItemDescription(){return driver.findElement(chosenItemDescription).getText();}
-    public String getChosenItemPrice() {
-        return driver.findElement(chosenItemPrice).getText();
+    public String getChosenItemDescription() {
+        return chosenItemDescription.getText();
     }
+
+    public String getChosenItemPrice() {
+        return chosenItemPrice.getText();
+    }
+
     public boolean isCartQuantityDisplayed() {
-        return driver.findElement(cartQuantity).isDisplayed();
+        return cartQuantity.isDisplayed();
     }
 
     public void clickRemoveButton() {
 
-        driver.findElement(removeButton).click();
+        removeButton.click();
     }
+
     public void clickContinueShoppingButton() {
 
-        driver.findElement(continueShoppingButton).click();
+        continueShoppingButton.click();
     }
+
     public void clickCheckoutButton() {
 
-        driver.findElement(checkoutButton).click();
+        checkoutButton.click();
     }
 }

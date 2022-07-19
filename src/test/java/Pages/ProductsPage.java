@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class ProductsPage extends HomePage {
     private final By addToCartButton = By.cssSelector("button[id^=add-to-cart]");
     private final By productLink = By.cssSelector("a[id$=_link]");
@@ -13,12 +15,16 @@ public class ProductsPage extends HomePage {
     private final By productDescription = By.cssSelector(".inventory_item_desc");
     private final By productPrice = By.cssSelector(".inventory_item_price");
 
+
+
+
     public ProductsPage(WebDriver driver) {
 
         super(driver);
     }
 
     public boolean isProductsPageHeaderDisplayed() {
+
         return driver.findElement(productsPageHeader).isDisplayed();
     }
 
@@ -36,11 +42,10 @@ public class ProductsPage extends HomePage {
         productContainer.findElement(productLink).click();
     }
 
-    public void clickAddToCardButton(String productsName) {
+    public void clickAddToCardButton() {
         driver.findElement(addToCartButton).click();
 
     }
-
 
     private WebElement getProductContainerByName(String productsName) {
         return driver.findElement(

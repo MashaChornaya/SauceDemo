@@ -4,6 +4,10 @@ import Pages.CartPage;
 import Pages.ItemDetailsPage;
 import Pages.LoginPage;
 import Pages.ProductsPage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -51,6 +55,10 @@ public class ItemDetailsTest extends BaseTest{
            Assert.assertTrue(productsPage.isBurgerMenuAboutDisplayed());
            Assert.assertTrue(productsPage.isBurgerMenuLogOutDisplayed());
            Assert.assertTrue(productsPage.isBurgerMenuResetDisplayed());
+
+           WebElement burgerMenu = (new WebDriverWait(driver, 5))
+                   .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".bm-menu")));
+           Assert.assertTrue(burgerMenu.isDisplayed());
        }
     }
 
