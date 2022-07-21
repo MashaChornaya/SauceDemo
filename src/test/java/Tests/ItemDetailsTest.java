@@ -33,7 +33,7 @@ public class ItemDetailsTest extends BaseTest{
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(), "$49.99");
         Assert.assertEquals(itemDetailsPage.getItemDescription(), "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.");
-        itemDetailsPage.clickAddToCartButton();
+        productsPage.addToCardButton(PRODUCT_NAME);
 
     }
     @Test
@@ -43,7 +43,7 @@ public class ItemDetailsTest extends BaseTest{
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(),"$49.99");
         Assert.assertEquals(itemDetailsPage.getItemDescription(), "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.");
-        itemDetailsPage.clickAddToCartButton();
+        productsPage.addToCardButton(PRODUCT_NAME);
         itemDetailsPage.clickCartButtonLink();
         Assert.assertTrue(cartPage.isCartQuantityDisplayed());
     }
@@ -56,9 +56,7 @@ public class ItemDetailsTest extends BaseTest{
            Assert.assertTrue(productsPage.isBurgerMenuLogOutDisplayed());
            Assert.assertTrue(productsPage.isBurgerMenuResetDisplayed());
 
-           WebElement burgerMenu = (new WebDriverWait(driver, 5))
-                   .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".bm-menu")));
-           Assert.assertTrue(burgerMenu.isDisplayed());
+
        }
     }
 

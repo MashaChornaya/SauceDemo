@@ -1,12 +1,12 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ItemDetailsPage extends HomePage {
-    @FindBy(css = "button[id^=add-to-cart]")
-    private WebElement addToCartButton;
 
     @FindBy(id = "back-to-products")
     private WebElement backToProductsButton;
@@ -20,12 +20,9 @@ public class ItemDetailsPage extends HomePage {
 
     public ItemDetailsPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver,this);
     }
 
-
-    public void clickAddToCartButton() {
-        addToCartButton.click();
-    }
 
     public void clickBackToProductsButton() {
         backToProductsButton.click();
@@ -35,10 +32,10 @@ public class ItemDetailsPage extends HomePage {
 
         return itemName.getText();
     }
-
-    public String getItemDescription() {
+    public String getItemDescription(){
         return itemDescription.getText();
     }
+
 
     public String getItemPrice() {
 

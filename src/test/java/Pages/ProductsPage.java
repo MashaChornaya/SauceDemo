@@ -4,19 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
 public class ProductsPage extends HomePage {
-    private final By addToCartButton = By.cssSelector("button[id^=add-to-cart]");
+    private final By cartButton = By.cssSelector("button[id^=add-to-cart]");
     private final By productLink = By.cssSelector("a[id$=_link]");
     private final String productContainerLocator
             = "//div[@class = 'inventory_item_name' and text() = '%s']/ancestor::div[@class='inventory_item']";
     private final By productsPageHeader = By.id("header_container");
     private final By productDescription = By.cssSelector(".inventory_item_desc");
     private final By productPrice = By.cssSelector(".inventory_item_price");
-
-
-
 
     public ProductsPage(WebDriver driver) {
 
@@ -42,11 +37,6 @@ public class ProductsPage extends HomePage {
         productContainer.findElement(productLink).click();
     }
 
-    public void clickAddToCardButton() {
-        driver.findElement(addToCartButton).click();
-
-    }
-
     private WebElement getProductContainerByName(String productsName) {
         return driver.findElement(
                 By.xpath(
@@ -54,5 +44,19 @@ public class ProductsPage extends HomePage {
                 )
         );
     }
+    public void addToCardButton(String productsName) {
+        WebElement productCartButton=clickAddToCardButton(productsName);
+        productCartButton.findElement(cartButton).click();
+    }
+    private WebElement clickAddToCardButton(String productsName) {
+        return driver.findElement(
+                By.xpath(
+                        String.format(productContainerLocator, productsName)
+                )
+        );
+
+    }
 }
+
+
 
