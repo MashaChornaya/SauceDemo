@@ -16,6 +16,7 @@ public abstract class HomePage extends BasePage{
 
         super(driver);
     }
+
     public void clickCartButtonLink(){
         driver.findElement(cartButtonLink).click();
     }

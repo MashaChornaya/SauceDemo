@@ -1,6 +1,7 @@
 package Tests;
 
 import Pages.*;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,10 +15,11 @@ public class CartTest extends BaseTest{
 
     @BeforeClass
     public void initialise(){
-        itemDetailsPage=new ItemDetailsPage(driver);
+
         productsPage=new ProductsPage(driver);
         checkoutPage=new CheckoutPage(driver);
         cartPage=new CartPage(driver);
+        itemDetailsPage=new ItemDetailsPage(driver);
     }
     @Test
     public void actionsOnCartPageTest() {
@@ -26,7 +28,7 @@ public class CartTest extends BaseTest{
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(), "$49.99");
         Assert.assertEquals(itemDetailsPage.getItemDescription(), "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.");
-        itemDetailsPage.clickAddToCartButton();
+        productsPage.addToCardButton(PRODUCT_NAME);
         itemDetailsPage.clickBackToProductsButton();
         itemDetailsPage.clickCartButtonLink();
         Assert.assertEquals(cartPage.getChosenItemName(),"Sauce Labs Fleece Jacket");

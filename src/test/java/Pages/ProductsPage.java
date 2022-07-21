@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class ProductsPage extends HomePage {
-    private final By addToCartButton = By.cssSelector("button[id^=add-to-cart]");
+    private final By cartButton = By.cssSelector("button[id^=add-to-cart]");
     private final By productLink = By.cssSelector("a[id$=_link]");
     private final String productContainerLocator
             = "//div[@class = 'inventory_item_name' and text() = '%s']/ancestor::div[@class='inventory_item']";
@@ -19,6 +19,7 @@ public class ProductsPage extends HomePage {
     }
 
     public boolean isProductsPageHeaderDisplayed() {
+
         return driver.findElement(productsPageHeader).isDisplayed();
     }
 
@@ -36,12 +37,6 @@ public class ProductsPage extends HomePage {
         productContainer.findElement(productLink).click();
     }
 
-    public void clickAddToCardButton(String productsName) {
-        driver.findElement(addToCartButton).click();
-
-    }
-
-
     private WebElement getProductContainerByName(String productsName) {
         return driver.findElement(
                 By.xpath(
@@ -49,5 +44,19 @@ public class ProductsPage extends HomePage {
                 )
         );
     }
+    public void addToCardButton(String productsName) {
+        WebElement productCartButton=clickAddToCardButton(productsName);
+        productCartButton.findElement(cartButton).click();
+    }
+    private WebElement clickAddToCardButton(String productsName) {
+        return driver.findElement(
+                By.xpath(
+                        String.format(productContainerLocator, productsName)
+                )
+        );
+
+    }
 }
+
+
 
