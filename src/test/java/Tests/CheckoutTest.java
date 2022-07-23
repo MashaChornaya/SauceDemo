@@ -35,7 +35,7 @@ public class CheckoutTest extends BaseTest {
     public void positiveActionsOnCheckoutYourInfoPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
-        productsPage.addToCardButton(PRODUCT_NAME);
+        itemDetailsPage.clickAddToCardButton();
         itemDetailsPage.clickCartButtonLink();
         cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutPage.isHeaderCheckoutPageDisplayed());
@@ -50,7 +50,7 @@ public class CheckoutTest extends BaseTest {
     public void negativeActionsOnCheckoutYourInfoPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
-        productsPage.addToCardButton(PRODUCT_NAME);
+        itemDetailsPage.clickAddToCardButton();
         itemDetailsPage.clickCartButtonLink();
         cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutPage.isHeaderCheckoutPageDisplayed());
@@ -66,7 +66,7 @@ public class CheckoutTest extends BaseTest {
     public void cancelActionOnCheckoutOverviewPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
-        productsPage.addToCardButton(PRODUCT_NAME);
+        itemDetailsPage.clickAddToCardButton();
         itemDetailsPage.clickCartButtonLink();
         cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutPage.isHeaderCheckoutPageDisplayed());
@@ -78,12 +78,12 @@ public class CheckoutTest extends BaseTest {
         checkoutOverviewPage.clickCancelButton();
         Assert.assertTrue(productsPage.isProductsPageHeaderDisplayed());
     }
-   WebElement ponyPicture= (WebElement) new WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".pony_express")));
+
     @Test
     public void finishActionOnCheckoutOverviewPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
-        productsPage.addToCardButton(PRODUCT_NAME);
+        itemDetailsPage.clickAddToCardButton();
         itemDetailsPage.clickCartButtonLink();
         cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutPage.isHeaderCheckoutPageDisplayed());
@@ -94,8 +94,7 @@ public class CheckoutTest extends BaseTest {
         Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageHeaderDisplayed());
         checkoutOverviewPage.clickFinishButton();
         Assert.assertTrue(finishPage.isCheckoutCompletePageHeaderDisplayed());
-
-        Assert.assertTrue(ponyPicture.isDisplayed());
-
+        Assert.assertTrue(finishPage.waitPonyPicture());
+        Assert.assertTrue(finishPage.isPonyPictureDisplayed());
     }
 }

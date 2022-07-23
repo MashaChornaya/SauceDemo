@@ -33,8 +33,7 @@ public class ItemDetailsTest extends BaseTest{
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(), "$49.99");
         Assert.assertEquals(itemDetailsPage.getItemDescription(), "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.");
-        productsPage.addToCardButton(PRODUCT_NAME);
-
+        itemDetailsPage.clickAddToCardButton();
     }
     @Test
     public void openCheckCartPageTest() {
@@ -43,7 +42,7 @@ public class ItemDetailsTest extends BaseTest{
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(),"$49.99");
         Assert.assertEquals(itemDetailsPage.getItemDescription(), "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.");
-        productsPage.addToCardButton(PRODUCT_NAME);
+        itemDetailsPage.clickAddToCardButton();
         itemDetailsPage.clickCartButtonLink();
         Assert.assertTrue(cartPage.isCartQuantityDisplayed());
     }

@@ -18,11 +18,13 @@ public class ItemDetailsPage extends HomePage {
     @FindBy(css = ".inventory_details_price")
     private WebElement itemPrice;
 
+    @FindBy(css="button[id^=add-to-cart]")
+    private WebElement addToCartButton;
+
     public ItemDetailsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
 
     public void clickBackToProductsButton() {
         backToProductsButton.click();
@@ -36,10 +38,11 @@ public class ItemDetailsPage extends HomePage {
         return itemDescription.getText();
     }
 
-
     public String getItemPrice() {
 
         return itemPrice.getText();
+    }
+    public void clickAddToCardButton() {addToCartButton.click();
     }
 
 }

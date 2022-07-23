@@ -3,6 +3,8 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductsPage extends HomePage {
     private final By cartButton = By.cssSelector("button[id^=add-to-cart]");
@@ -17,7 +19,6 @@ public class ProductsPage extends HomePage {
 
         super(driver);
     }
-
     public boolean isProductsPageHeaderDisplayed() {
 
         return driver.findElement(productsPageHeader).isDisplayed();
@@ -31,30 +32,16 @@ public class ProductsPage extends HomePage {
 
         return driver.findElement(productPrice).getText();
     }
-
     public void openItemByName(String productsName) {
         WebElement productContainer = getProductContainerByName(productsName);
         productContainer.findElement(productLink).click();
     }
-
     private WebElement getProductContainerByName(String productsName) {
         return driver.findElement(
                 By.xpath(
                         String.format(productContainerLocator, productsName)
                 )
         );
-    }
-    public void addToCardButton(String productsName) {
-        WebElement productCartButton=clickAddToCardButton(productsName);
-        productCartButton.findElement(cartButton).click();
-    }
-    private WebElement clickAddToCardButton(String productsName) {
-        return driver.findElement(
-                By.xpath(
-                        String.format(productContainerLocator, productsName)
-                )
-        );
-
     }
 }
 
