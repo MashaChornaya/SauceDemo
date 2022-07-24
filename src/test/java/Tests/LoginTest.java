@@ -9,13 +9,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-
     @Test(description = "Test 1", groups = {"Smoke"} )
     public void positiveLoginTest() {
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
-
     }
     @Test(groups = {"Regression", "Negative"},dataProvider = "negativeLoginTestData")
     public void negativeLoginTest(String userName, String password, String expectedErrorMassage) {
