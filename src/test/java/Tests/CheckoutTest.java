@@ -31,7 +31,7 @@ public class CheckoutTest extends BaseTest {
         finishPage = new FinishPage(driver);
     }
 
-    @Test
+    @Test(description = "all fields are filled in correctly", groups = {"Smoke"})
     public void positiveActionsOnCheckoutYourInfoPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
@@ -46,7 +46,7 @@ public class CheckoutTest extends BaseTest {
         Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageHeaderDisplayed());
     }
 
-    @Test
+    @Test(description = "field-first name is null", groups = {"Regression","Negative"})
     public void negativeActionsOnCheckoutYourInfoPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
@@ -61,8 +61,7 @@ public class CheckoutTest extends BaseTest {
         Assert.assertTrue(checkoutPage.isErrorMassageCheckoutPageDisplayed());
         Assert.assertEquals(checkoutPage.getErrorMassageCheckoutPageText(), "Error: First Name is required");
     }
-
-    @Test
+    @Test(description = "all fields are filled in correctly.Checkout Overview Page is displayed,but user click button 'Cancel'",groups = {"Regression","Negative"})
     public void cancelActionOnCheckoutOverviewPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
@@ -79,7 +78,7 @@ public class CheckoutTest extends BaseTest {
         Assert.assertTrue(productsPage.isProductsPageHeaderDisplayed());
     }
 
-    @Test
+    @Test(description = "Checkout was correctly",groups = {"Smoke"})
     public void finishActionOnCheckoutOverviewPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
