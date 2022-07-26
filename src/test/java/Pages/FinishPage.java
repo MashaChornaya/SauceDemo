@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class FinishPage extends BasePage{
     private final By checkoutCompletePageHeader = By.cssSelector(".header_secondary_container");
     private final By checkoutCompletePicture=By.cssSelector(".pony_express");
-
     public FinishPage(WebDriver driver) {
         super(driver);
     }

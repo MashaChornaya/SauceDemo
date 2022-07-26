@@ -80,7 +80,6 @@ public class CheckoutTest extends BaseTest {
         checkoutOverviewPage.clickCancelButton();
         Assert.assertTrue(productsPage.isProductsPageHeaderDisplayed());
     }
-
     @Test
     public void finishActionOnCheckoutOverviewPageTest() {
         loginPage.login(USERNAME, PASSWORD);
