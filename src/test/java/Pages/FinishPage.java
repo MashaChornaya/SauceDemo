@@ -19,9 +19,8 @@ public class FinishPage extends BasePage{
    public boolean  isPonyPictureDisplayed() {
        return driver.findElement(checkoutCompletePicture).isDisplayed();
    }
-    public boolean waitPonyPicture(){
+    public void waitPonyPicture(){
         WebElement ponyPicture=(new WebDriverWait(driver, 5))
                 .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".pony_express")));
-        return true;
     }
 }

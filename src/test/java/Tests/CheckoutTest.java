@@ -9,6 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Collections;
+
 public class CheckoutTest extends BaseTest {
     final static String CHECKOUT_FIRST_NAME = "Lev";
     final static String CHECKOUT_LAST_NAME = "Tolstoy";
@@ -94,7 +96,6 @@ public class CheckoutTest extends BaseTest {
         Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageHeaderDisplayed());
         checkoutOverviewPage.clickFinishButton();
         Assert.assertTrue(finishPage.isCheckoutCompletePageHeaderDisplayed());
-        Assert.assertTrue(finishPage.waitPonyPicture());
         Assert.assertTrue(finishPage.isPonyPictureDisplayed());
     }
 }
