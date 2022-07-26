@@ -19,7 +19,7 @@ public class ItemDetailsTest extends BaseTest{
    LoginPage loginPage;
    CartPage cartPage;
 
-   @BeforeClass
+   @BeforeClass (alwaysRun = true)
    public void initialise(){
 
        itemDetailsPage=new ItemDetailsPage(driver);
@@ -34,7 +34,6 @@ public class ItemDetailsTest extends BaseTest{
         Assert.assertEquals(itemDetailsPage.getItemName(), itemName);
         Assert.assertEquals(itemDetailsPage.getItemPrice(), itemPrice);
         Assert.assertEquals(itemDetailsPage.getItemDescription(), itemDescription);
-        itemDetailsPage.clickAddToCardButton();
     }
     @DataProvider()
     public Object[][] inventoryItemsTestData(){

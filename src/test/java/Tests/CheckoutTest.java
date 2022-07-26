@@ -21,7 +21,7 @@ public class CheckoutTest extends BaseTest {
     FinishPage finishPage;
 
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void initialise() {
         itemDetailsPage = new ItemDetailsPage (driver);
         productsPage = new ProductsPage(driver);

@@ -13,7 +13,7 @@ public class CartTest extends BaseTest{
     CartPage cartPage;
 
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void initialise(){
 
         productsPage=new ProductsPage(driver);
