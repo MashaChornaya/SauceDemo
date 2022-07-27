@@ -95,6 +95,8 @@ public class CheckoutTest extends BaseTest {
         Assert.assertTrue(checkoutOverviewPage.isCheckoutOverviewPageHeaderDisplayed());
         checkoutOverviewPage.clickFinishButton();
         Assert.assertTrue(finishPage.isCheckoutCompletePageHeaderDisplayed());
+        finishPage.waitPonyPicture();
         Assert.assertTrue(finishPage.isPonyPictureDisplayed());
+
     }
 }
