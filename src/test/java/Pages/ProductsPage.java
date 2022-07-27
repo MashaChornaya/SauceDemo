@@ -3,9 +3,11 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductsPage extends HomePage {
-    private final By addToCartButton = By.cssSelector("button[id^=add-to-cart]");
+    private final By cartButton = By.cssSelector("button[id^=add-to-cart]");
     private final By productLink = By.cssSelector("a[id$=_link]");
     private final String productContainerLocator
             = "//div[@class = 'inventory_item_name' and text() = '%s']/ancestor::div[@class='inventory_item']";
@@ -17,8 +19,8 @@ public class ProductsPage extends HomePage {
 
         super(driver);
     }
-
     public boolean isProductsPageHeaderDisplayed() {
+
         return driver.findElement(productsPageHeader).isDisplayed();
     }
 
@@ -30,18 +32,10 @@ public class ProductsPage extends HomePage {
 
         return driver.findElement(productPrice).getText();
     }
-
     public void openItemByName(String productsName) {
         WebElement productContainer = getProductContainerByName(productsName);
         productContainer.findElement(productLink).click();
     }
-
-    public void clickAddToCardButton(String productsName) {
-        driver.findElement(addToCartButton).click();
-
-    }
-
-
     private WebElement getProductContainerByName(String productsName) {
         return driver.findElement(
                 By.xpath(
@@ -49,5 +43,8 @@ public class ProductsPage extends HomePage {
                 )
         );
     }
+
 }
+
+
 

@@ -2,23 +2,37 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class CheckoutOverviewPage extends BasePage{
+public class CheckoutOverviewPage extends BasePage {
+    @FindBy(css = ".header_secondary_container")
+    private WebElement checkoutOverviewPageHeader;
 
-    private final By checkoutOverviewPageHeader = By.cssSelector(".header_secondary_container");
-    private final By finishButton = By.cssSelector("#finish");
-    private final  By cancelButton = By.cssSelector("#cancel");
+
+    @FindBy(css = "#finish")
+    private WebElement finishButton;
+
+
+    @FindBy(css = "#cancel")
+    private WebElement cancelButton;
+
 
     public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver,this);
     }
-    public boolean isCheckoutOverviewPageHeaderDisplayed(){
-       return driver.findElement(checkoutOverviewPageHeader).isDisplayed();
+
+    public boolean isCheckoutOverviewPageHeaderDisplayed() {
+        return checkoutOverviewPageHeader.isDisplayed();
     }
-    public void clickCancelButton(){
-         driver.findElement(cancelButton).click();
+
+    public void clickCancelButton() {
+        cancelButton.click();
     }
-    public void clickFinishButton(){
-        driver.findElement(finishButton).click();
+
+    public void clickFinishButton() {
+        finishButton.click();
     }
 }
