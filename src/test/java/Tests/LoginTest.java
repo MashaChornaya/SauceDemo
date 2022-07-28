@@ -8,14 +8,14 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest {
 
-    @Test(description = "Test 1", groups = {"Smoke"} )
+public class LoginTest extends BaseTest {
+    @Test(description = "Login test where username and password are correct", groups = {"Smoke"} )
     public void positiveLoginTest() {
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
-
+        Assert.assertTrue(productsPage.isProductsPageHeaderDisplayed());
     }
     @Test(groups = {"Regression", "Negative"},dataProvider = "negativeLoginTestData")
     public void negativeLoginTest(String userName, String password, String expectedErrorMassage) {
