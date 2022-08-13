@@ -4,6 +4,8 @@ import Pages.CartPage;
 import Pages.ItemDetailsPage;
 import Pages.LoginPage;
 import Pages.ProductsPage;
+import io.qameta.allure.*;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,7 +14,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+@Log4j2
 public class ItemDetailsTest extends BaseTest{
    ItemDetailsPage itemDetailsPage;
    ProductsPage productsPage;
@@ -28,8 +30,14 @@ public class ItemDetailsTest extends BaseTest{
        cartPage=new CartPage(driver);
    }
     @Test(groups={"Regression"},dataProvider = "inventoryItemsTestData")
+    @Description("Check item name, price and description")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://www.saucedemo.com")
+    @TmsLink("6")
     public void inventoryItemsTest(String itemName, String itemPrice, String itemDescription) {
+        log.info("Set user name and password from Base Test");
         loginPage.login(USERNAME, PASSWORD);
+        log.info("Open Item with product links from Products Page and name from data provider");
         productsPage.openItemByName(itemName);
         Assert.assertEquals(itemDetailsPage.getItemName(), itemName);
         Assert.assertEquals(itemDetailsPage.getItemPrice(), itemPrice);
@@ -48,7 +56,9 @@ public class ItemDetailsTest extends BaseTest{
     }
     @Test(description ="open cart page" ,groups = {"Smoke"})
     public void openCheckCartPageTest() {
+        log.info("Set user name and password from Base Test");
         loginPage.login(USERNAME, PASSWORD);
+        log.info("Open Item with product name from Base Test");
         productsPage.openItemByName(PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(),"$49.99");
@@ -59,7 +69,9 @@ public class ItemDetailsTest extends BaseTest{
     }
        @Test(description = "check for all strings of Burger menu",groups = {"Regression"})
     public void openBurgerMenuTest() {
+           log.info("Set user name and password from Base Test");
            loginPage.login(USERNAME, PASSWORD);
+           log.info("Open burger menu");
            productsPage.clickToBurgerMenu();
            Assert.assertTrue(productsPage.isBurgerMenuAllItemsDisplayed());
            Assert.assertTrue(productsPage.isBurgerMenuAboutDisplayed());
