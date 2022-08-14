@@ -1,8 +1,9 @@
 package Pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+@Log4j2
 public class CheckoutPage extends BasePage{
 
 private final By checkoutPageHeader = By.xpath("//div[@class='header_secondary_container']");
@@ -28,22 +29,24 @@ private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
       clickContinueButton();
     }
     public void setFirstName(String firstName){
-
+        log.info("Set First Name from Checkout Test");
         driver.findElement(checkoutPageInputFirstName).sendKeys(firstName);
     }
     public void setLastName(String lastName){
-
+        log.info("Set Last Name from Checkout Test");
         driver.findElement(checkoutPageInputLastName).sendKeys(lastName);
     }
     public void setZipPostalCode(String zipPostalCode){
+        log.info("Set Zip Postal Code from Checkout Test");
         driver.findElement(checkoutPageInputZipPostalCode).sendKeys(zipPostalCode);
     }
     public void clickContinueButton(){
+        log.info("Click continue button ");
         driver.findElement(continueButton).click();
     }
 
     public boolean isErrorMassageCheckoutPageDisplayed(){
-
+        log.info("Error Massage on checkout page displayed");
         return  driver.findElement(errorMassageCheckoutPage).isDisplayed();
     }
     public String getErrorMassageCheckoutPageText(){

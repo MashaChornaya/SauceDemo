@@ -2,12 +2,11 @@ package Tests;
 
 import Pages.*;
 import io.qameta.allure.*;
-import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-@Log4j2
+
 
 public class CartTest extends BaseTest{
     ItemDetailsPage itemDetailsPage;
@@ -30,9 +29,7 @@ public class CartTest extends BaseTest{
     @Link("http://google.com")
     @TmsLink("3")
     public void actionsOnCartPageTest() {
-        log.info("Set username and password from cart Test");
         loginPage.login("standard_user", "secret_sauce");
-        log.info("Open Item with product name from Base Test");
         productsPage.openItemByName(PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemName(), PRODUCT_NAME);
         Assert.assertEquals(itemDetailsPage.getItemPrice(), "$49.99");
