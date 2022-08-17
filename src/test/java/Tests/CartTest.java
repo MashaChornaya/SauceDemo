@@ -1,10 +1,12 @@
 package Tests;
 
 import Pages.*;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 
 public class CartTest extends BaseTest{
     ItemDetailsPage itemDetailsPage;
@@ -22,6 +24,10 @@ public class CartTest extends BaseTest{
         itemDetailsPage=new ItemDetailsPage(driver);
     }
     @Test(groups = {"Smoke"})
+    @Description("All actions that you can made on cart page")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link("http://google.com")
+    @TmsLink("3")
     public void actionsOnCartPageTest() {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.openItemByName(PRODUCT_NAME);

@@ -1,7 +1,9 @@
 package Pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+@Log4j2
 
 public class LoginPage extends BasePage {
 
@@ -15,7 +17,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
     public boolean isErrorMassageDisplayed(){
-
+        log.info("Error massage displayed");
         return  driver.findElement(errorMassage).isDisplayed();
     }
     public String getErrorMassageText(){
@@ -29,14 +31,15 @@ public class LoginPage extends BasePage {
         clickLoginButton();
     }
 public void setUserName(String userName){
-
+        log.info("Set username from Base test");
         driver.findElement(usernameInput).sendKeys(userName);
 }
 public void setPassword(String password){
-
+        log.info("Set password from Base test");
         driver.findElement(passwordInput).sendKeys(password);
     }
     public void clickLoginButton(){
+        log.info("click on login button");
         driver.findElement(loginButton).click();
     }
 }
