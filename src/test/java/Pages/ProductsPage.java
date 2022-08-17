@@ -1,10 +1,12 @@
 package Pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+@Log4j2
 
 public class ProductsPage extends HomePage {
     private final By cartButton = By.cssSelector("button[id^=add-to-cart]");
@@ -20,7 +22,7 @@ public class ProductsPage extends HomePage {
         super(driver);
     }
     public boolean isProductsPageHeaderDisplayed() {
-
+        log.info("Header on products page displayed");
         return driver.findElement(productsPageHeader).isDisplayed();
     }
 
@@ -33,6 +35,7 @@ public class ProductsPage extends HomePage {
         return driver.findElement(productPrice).getText();
     }
     public void openItemByName(String productsName) {
+        log.info("Open Item with product name from Base Test");
         WebElement productContainer = getProductContainerByName(productsName);
         productContainer.findElement(productLink).click();
     }

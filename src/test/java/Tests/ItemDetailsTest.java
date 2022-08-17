@@ -4,6 +4,7 @@ import Pages.CartPage;
 import Pages.ItemDetailsPage;
 import Pages.LoginPage;
 import Pages.ProductsPage;
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,6 +29,10 @@ public class ItemDetailsTest extends BaseTest{
        cartPage=new CartPage(driver);
    }
     @Test(groups={"Regression"},dataProvider = "inventoryItemsTestData")
+    @Description("Check item name, price and description")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://www.saucedemo.com")
+    @TmsLink("6")
     public void inventoryItemsTest(String itemName, String itemPrice, String itemDescription) {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(itemName);

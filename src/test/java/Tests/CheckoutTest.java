@@ -1,6 +1,7 @@
 package Tests;
 
 import Pages.*;
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -33,7 +34,11 @@ public class CheckoutTest extends BaseTest {
         finishPage = new FinishPage(driver);
     }
 
-    @Test(description = "all fields are filled in correctly", groups = {"Smoke"})
+    @Test(groups = {"Smoke"}, description = "all fields are filled in correctly")
+    @Description("Successful addition and checkout")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link("https://www.saucedemo.com")
+    @TmsLink("5")
     public void positiveActionsOnCheckoutYourInfoPageTest() {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.openItemByName(PRODUCT_NAME);
