@@ -29,15 +29,15 @@ private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
       clickContinueButton();
     }
     public void setFirstName(String firstName){
-        log.info("Set First Name from Checkout Test");
+        log.info("Set 'Lev' from Checkout Test");
         driver.findElement(checkoutPageInputFirstName).sendKeys(firstName);
     }
     public void setLastName(String lastName){
-        log.info("Set Last Name from Checkout Test");
+        log.info("Set 'Tolstoy' from Checkout Test");
         driver.findElement(checkoutPageInputLastName).sendKeys(lastName);
     }
     public void setZipPostalCode(String zipPostalCode){
-        log.info("Set Zip Postal Code from Checkout Test");
+        log.info("Set '12345' Code from Checkout Test");
         driver.findElement(checkoutPageInputZipPostalCode).sendKeys(zipPostalCode);
     }
     public void clickContinueButton(){
@@ -46,7 +46,6 @@ private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
     }
 
     public boolean isErrorMassageCheckoutPageDisplayed(){
-        log.info("Error Massage on checkout page displayed");
         return  driver.findElement(errorMassageCheckoutPage).isDisplayed();
     }
     public String getErrorMassageCheckoutPageText(){
