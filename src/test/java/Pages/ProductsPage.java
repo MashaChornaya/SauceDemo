@@ -22,7 +22,6 @@ public class ProductsPage extends HomePage {
         super(driver);
     }
     public boolean isProductsPageHeaderDisplayed() {
-        log.info("Header on products page displayed");
         return driver.findElement(productsPageHeader).isDisplayed();
     }
 
@@ -35,7 +34,7 @@ public class ProductsPage extends HomePage {
         return driver.findElement(productPrice).getText();
     }
     public void openItemByName(String productsName) {
-        log.info("Open Item with product name from Base Test");
+        log.info("Open Item with product name 'Sauce Labs Fleece Jacket' from Base Test");
         WebElement productContainer = getProductContainerByName(productsName);
         productContainer.findElement(productLink).click();
     }
@@ -46,7 +45,6 @@ public class ProductsPage extends HomePage {
                 )
         );
     }
-
 }
 
 

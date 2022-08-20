@@ -39,7 +39,6 @@ public class CartPage extends BasePage {
     }
 
     public boolean isHeaderCartPageDisplayed() {
-        log.info("Header on cart page displayed");
         return headerCartPage.isDisplayed();
     }
 
@@ -59,12 +58,11 @@ public class CartPage extends BasePage {
     }
 
     public boolean isCartQuantityDisplayed() {
-        log.info("Cart Quantity on cart page displayed");
         return cartQuantity.isDisplayed();
     }
 
     public void clickRemoveButton() {
-
+        log.info("Click remove button ");
         removeButton.click();
     }
 

@@ -21,7 +21,6 @@ private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
         return driver.findElement(checkoutPageHeader).isDisplayed();
     }
 
-
     public void checkout(String firstName, String lastName, String zipPostalCode){
       setFirstName(firstName);
       setLastName(lastName);

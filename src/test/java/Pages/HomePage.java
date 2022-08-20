@@ -1,5 +1,6 @@
 package Pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
+@Log4j2
 
 public abstract class HomePage extends BasePage{
     private final By cartButtonLink=By.cssSelector(".shopping_cart_link");
@@ -22,9 +24,11 @@ public abstract class HomePage extends BasePage{
         super(driver);
     }
     public void clickCartButtonLink(){
+        log.info("Click cart button ");
         driver.findElement(cartButtonLink).click();
     }
     public void clickToBurgerMenu (){
+        log.info("Click to burger menu button ");
         driver.findElement(burgerMenuButton).click();
     }
 
