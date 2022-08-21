@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers{
+    cron('5 * * * 1-5')//выполнять в 5 минут каждого часа по будним дням
+    }
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
@@ -8,6 +11,7 @@ pipeline {
 
     parameters {
      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+     gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'SUITE NAME', type: 'PT_BRANCH'
     }
 
 
@@ -16,7 +20,6 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git branch: "${params.BRANCH}", url: 'https://github.com/MashaChornaya/SauceDemo.git'
-
                 // Run Maven on a Unix agent.
                bat "mvn -Dmaven.test.failure.ignore=true clean test"
 
@@ -45,6 +48,14 @@ pipeline {
                 }
             }
         }
-
+         stage('Browser') {
+                    steps {
+                        script {
+                            def browsers = ['chrome', 'firefox']
+                            for (int i = 0; i < browsers.size(); ++i) {
+                                echo "Testing the ${browsers[i]} browser"
+                            }
+                        }
+                    }
     }
 }
