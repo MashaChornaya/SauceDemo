@@ -3,10 +3,12 @@ pipeline {
     triggers{
     cron('5 * * * 1-5')//выполнять в 5 минут каждого часа по будним дням
     }
+
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
     }
+
     parameters {
      gitParameter (branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH')
 
@@ -22,7 +24,7 @@ pipeline {
                 // Run Maven on a Unix agent.
                bat "mvn -Dmaven.test.failure.ignore=true -DsuiteXmlFile=${params.SUITE_NAME} -Dbrowser=${params.BROWSER} clean test"
 
-                // To  run Maven on a Windows agent, use
+                // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
