@@ -35,7 +35,7 @@ public void setUserName(String userName){
         driver.findElement(usernameInput).sendKeys(userName);
 }
 public void setPassword(String password){
-        log.info("Set password '{secret_sauce}' from Base test");
+        log.info("Set password'{secret_sauce}' from Base test");
         driver.findElement(passwordInput).sendKeys(password);
     }
     public void clickLoginButton(){

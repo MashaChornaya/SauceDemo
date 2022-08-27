@@ -32,11 +32,11 @@ private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
         driver.findElement(checkoutPageInputFirstName).sendKeys(firstName);
     }
     public void setLastName(String lastName){
-        log.info("Set '{Tolstoy}' from Checkout Test");
+        log.info("Set'{Tolstoy}' from Checkout Test");
         driver.findElement(checkoutPageInputLastName).sendKeys(lastName);
     }
     public void setZipPostalCode(String zipPostalCode){
-        log.info("Set '{12345}' Code from Checkout Test");
+        log.info("Set'{12345}' Code from Checkout Test");
         driver.findElement(checkoutPageInputZipPostalCode).sendKeys(zipPostalCode);
     }
     public void clickContinueButton(){
