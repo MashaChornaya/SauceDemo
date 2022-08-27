@@ -16,8 +16,6 @@ pipeline {
 
      choice(name:'BROWSER', choices: ['chrome', 'edge'])
 
-
-
   stages {
         stage('Run tests') {
             steps {
