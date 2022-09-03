@@ -34,7 +34,7 @@ public class ProductsPage extends HomePage {
         return driver.findElement(productPrice).getText();
     }
     public void openItemByName(String productsName) {
-        log.info("Open Item with product name 'Sauce Labs Fleece Jacket' from Base Test");
+        log.info(String.format("Open Item with product name % from Base Test"));
         WebElement productContainer = getProductContainerByName(productsName);
         productContainer.findElement(productLink).click();
     }
