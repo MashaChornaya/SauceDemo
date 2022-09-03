@@ -31,11 +31,11 @@ public class LoginPage extends BasePage {
         clickLoginButton();
     }
 public void setUserName(String userName){
-        log.info(String.format("Set username % from Base test"));
+        log.info(String.format("Set username % from Base test",userName));
         driver.findElement(usernameInput).sendKeys(userName);
 }
 public void setPassword(String password){
-        log.info(String.format("Set password % from Base test"));
+        log.info(String.format("Set password % from Base test",password));
         driver.findElement(passwordInput).sendKeys(password);
     }
     public void clickLoginButton(){

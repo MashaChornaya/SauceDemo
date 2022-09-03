@@ -28,15 +28,15 @@ private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
       clickContinueButton();
     }
     public void setFirstName(String firstName){
-        log.info(String.format("Set name %s from Checkout Test"));
+        log.info(String.format("Set name %s from Checkout Test",firstName));
         driver.findElement(checkoutPageInputFirstName).sendKeys(firstName);
     }
     public void setLastName(String lastName){
-        log.info(String.format("Set lastname % from Checkout Test"));
+        log.info(String.format("Set lastname % from Checkout Test",lastName));
         driver.findElement(checkoutPageInputLastName).sendKeys(lastName);
     }
     public void setZipPostalCode(String zipPostalCode){
-        log.info(String.format("Set Code % from Checkout Test"));
+        log.info(String.format("Set Code % from Checkout Test",zipPostalCode));
         driver.findElement(checkoutPageInputZipPostalCode).sendKeys(zipPostalCode);
     }
     public void clickContinueButton(){
