@@ -21,7 +21,6 @@ private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
         return driver.findElement(checkoutPageHeader).isDisplayed();
     }
 
-
     public void checkout(String firstName, String lastName, String zipPostalCode){
       setFirstName(firstName);
       setLastName(lastName);
@@ -29,15 +28,15 @@ private final By errorMassageCheckoutPage =By.xpath("//h3[@data-test]");
       clickContinueButton();
     }
     public void setFirstName(String firstName){
-        log.info("Set 'Lev' from Checkout Test");
+        log.info(String.format("Set name %s from Checkout Test",firstName));
         driver.findElement(checkoutPageInputFirstName).sendKeys(firstName);
     }
     public void setLastName(String lastName){
-        log.info("Set 'Tolstoy' from Checkout Test");
+        log.info(String.format("Set lastname % from Checkout Test",lastName));
         driver.findElement(checkoutPageInputLastName).sendKeys(lastName);
     }
     public void setZipPostalCode(String zipPostalCode){
-        log.info("Set '12345' Code from Checkout Test");
+        log.info(String.format("Set Code % from Checkout Test",zipPostalCode));
         driver.findElement(checkoutPageInputZipPostalCode).sendKeys(zipPostalCode);
     }
     public void clickContinueButton(){

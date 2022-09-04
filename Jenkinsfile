@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers{
+    cron('5 * * * 1-5')//выполнять в 5 минут каждого часа по будним дням
+    }
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
@@ -7,18 +10,19 @@ pipeline {
     }
 
     parameters {
-     gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-    }
+     gitParameter (branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH')
 
+     string (defaultValue: 'smoke.xml', name: 'SUITE_NAME', trim: true)
+
+     choice(name:'BROWSER', choices: ['chrome', 'edge'])
 
   stages {
         stage('Run tests') {
             steps {
                 // Get some code from a GitHub repository
                 git branch: "${params.BRANCH}", url: 'https://github.com/MashaChornaya/SauceDemo.git'
-
                 // Run Maven on a Unix agent.
-               bat "mvn -Dmaven.test.failure.ignore=true clean test"
+               bat "mvn -Dmaven.test.failure.ignore=true -DsuiteXmlFile=${params.SUITE_NAME} -Dbrowser=${params.BROWSER} clean test"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -45,6 +49,5 @@ pipeline {
                 }
             }
         }
-
     }
 }

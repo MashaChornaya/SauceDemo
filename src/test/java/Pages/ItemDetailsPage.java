@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 @Log4j2
-
 public class ItemDetailsPage extends HomePage {
 
     @FindBy(id = "back-to-products")
